@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { estimateFare, getRideHistory, rateRide, requestRide, updateRideStatus } from "../controllers/rideController.js";
+import { requireAuth } from "../middleware/auth.js";
+const router = Router();
+router.post("/estimate", requireAuth, estimateFare);
+router.post("/request", requireAuth, requestRide);
+router.patch("/:id/status", requireAuth, updateRideStatus);
+router.get("/history", requireAuth, getRideHistory);
+router.post("/:id/rate", requireAuth, rateRide);
+export default router;
